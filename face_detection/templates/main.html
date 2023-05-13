@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex flex-column">
+
+    <h2 class="my-4">
+        Logged in as : <span class="text-danger" > {{request.user.username}}</span>
+    </h2>
+
+    <a class="btn btn-primary text-white" href="{% url 'update-user' %}">
+        Update User </a>
+    <br> </br>
+
+    <a class="btn btn-danger" href="{% url 'logout' %}"> Logout </a>
+
+</div>
+
+{% endblock content %}

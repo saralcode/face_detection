@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+{% endblock scripts %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+<form action="" class="d-flex p-2 flex-column" method="post" style="border: 1px solid #ccc">
+  {% if error %}
+  <div class="p-4 bg-white">
+    <h4 class="text-danger"> {{error}}  </h4>
+  </div>
+  {% endif%}
+  {% csrf_token %}
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr />
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" class="form-control" name="username" required />
+    <label for="email"><b>Email</b></label>
+    <input type="email" class="form-control" placeholder="Enter Your Email" name="email" required />
+
+    <label for="password"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      name="password"
+      class="form-control"
+      required
+    />
+
+    <label for="confirm-password"><b>Repeat Password</b></label>
+    <input
+      type="password"
+      placeholder="Repeat Password"
+      name="confirm-password"
+      class="form-control"
+      required
+    />
+    <div class="clearfix my-2 text-center d-flex flex-column">
+      <button type="submit" class="btn my-2 btn-warning">Sign Up</button>
+      <h5 class="my-2">OR</h5>
+      <a  href="{% url 'login' %}" type="button"  class="btn my-2 btn-primary">Login</a>
+    </div>
+  </form>
+</div>
+
+
+
+{% endblock content %}

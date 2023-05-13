@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+<script src="{% static 'login.js' %}" defer></script>
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+{% endblock scripts%}
+
+{% block content %}
+
+<div  class="video-container border-5 rounded-2 border border-danger ">
+  <video autoplay width="100%"  id="video-element"></video>
+</div>
+<canvas class="visually-hidden" id="img-element">
+
+</canvas>
+<span id="csrf">
+  {% csrf_token %}
+</span>
+
+<button class="btn btn-warning text-white my-2" id="capture-btn">Capture</button>
+<a class="btn btn-danger my-4" href="{% url 'logout' %}"> Logout </a>
+{% if image %}
+<div class="ratio ratio-16x9 container-sm card p-2 border border-white border-4 ">
+  <img class="img-fluid" src="{{ image}}" />
+
+  <!-- <img style = "max-width: 25rem;" src="{{ image}}" /> -->
+</div>
+{% else  %}
+  <h3>No Image Available</h3>
+{% endif %}
+
+
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+.userPhoto{
+    max-width: 20rem;
+    width: 10rem;
+    height: auto;
+}
+video{
+    max-height: 90vh;
+    overflow: hidden;
+}
+input, label{
+    margin: 5px 0 5px 0;
+}
+.form-control:focus {
+    border-color: #dde105 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25)!important;
+}
