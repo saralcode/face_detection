@@ -1,8 +1,6 @@
 import face_recognition as fr
-import pathlib
 import os
-from django.core.files.base import ContentFile
-import urllib.request as ur
+
 
 
 def compare_face(file, url):
@@ -24,16 +22,3 @@ def compare_face(file, url):
         return is_target_face[0]
     return False
 
-
-
-
-# def find_target_face():
-#     # face_location = fr.face_locations(target_image)
-#     for person in encode_faces('face_recog/faces/'):
-#         try:
-#             encoded_face = person [0]
-#             filename = person [1]
-#             is_target_face = fr.compare_faces(encoded_face, target_encoding, tolerance=0.55)
-#             print(f"{is_target_face[0]} {filename}")
-#         except:
-#             print("Error ")

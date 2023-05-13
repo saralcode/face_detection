@@ -8,6 +8,7 @@
 
 {% block content %}
 
+
 <div class="video-container border-5 rounded-2 border border-danger ">
   <video autoplay width="100%" id="video-element"></video>
 </div>
@@ -16,19 +17,25 @@
 </canvas>
 
 
-  <button class="btn my-4 btn-danger " id="capture-btn">Login with Face</button>
+<button class="btn my-4 btn-danger " id="capture-btn">Login with Face</button>
 
 <div>
-  <h4 class="text-white text-center" >OR</h4>
+  <h4 class="text-white text-center">OR</h4>
 
   <span id="csrf">
     {% csrf_token %}
   </span>
   <form action="" method="post" class="d-flex flex-column">
+    {% if error %}
+    <div class="p-4 bg-white">
+      <h4 class="text-danger"> {{error}} </h4>
+    </div>
+    {% endif %}
     <h2 class="text-center">Login using Credentials</h2>
+
     {% csrf_token %}
     <label class="mt-4" for="username"><b>Username</b></label>
-    <input type="text" class="my-1 form-control"  placeholder="Enter Username" name="username" required />
+    <input type="text" class="my-1 form-control" placeholder="Enter Username" name="username" required />
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" class="form-control" name="password" required />
     <button class="btn btn-warning mt-4" type="submit"> Login</button>

@@ -8,6 +8,7 @@ from .helper.compare_images import compare_face
 from logs.models import Log
 from datetime import datetime
 def login_view(request):
+    contextData = {}
     if (request.method == "POST"):
         files = request.FILES
         if(files):
@@ -40,10 +41,10 @@ def login_view(request):
             login(request=request, user=user)
             return redirect("home", permanent=True)
         else:
-            return HttpResponse("Invalid Credentials")
+            contextData['error']="Invalid Credentials"
     if (request.user.is_authenticated):
         return redirect("home")
-    return render(request=request, template_name='login.html', context={})
+    return render(request=request, template_name='login.html', context=contextData)
 
 
 def logout_view(request):
